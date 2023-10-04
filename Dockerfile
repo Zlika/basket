@@ -4,5 +4,5 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 COPY import_matchs.py .
 ENTRYPOINT ["python3", "import_matchs.py"]
-CMD ["id_fbi", "password_fbi", "id_kali", "password_kali"]
+CMD ["id_fbi", "password_fbi", "url_kali", "id_kali", "password_kali"]
 

@@ -62,10 +62,10 @@ def download_matchs_file_from_fbi(driver, username_fbi, password_fbi):
     wait_file_downloaded(matchs_file)
     print("Fin du téléchargement")
 
-def import_matchs_file_to_kalisport(driver, username_kali, password_kali):
+def import_matchs_file_to_kalisport(driver, url_kali, username_kali, password_kali):
     # Upload dans kalisport
     print("Connexion à Kali")
-    driver.get("https://ese-basket-ttt.kalisport.com/connexion")
+    driver.get(url_kali + "/connexion")
     driver.find_element(By.ID, "login").send_keys(username_kali)
     driver.find_element(By.ID, "mdp").send_keys(password_kali)
     driver.find_element(By.ID, "cmdOk").click()
@@ -90,21 +90,22 @@ def import_matchs_file_to_kalisport(driver, username_kali, password_kali):
     print("Fin de l'import")
 
 def main():
-    if len(sys.argv) != 5:
+    if len(sys.argv) != 6:
         raise Exception("Arguments attendus : identifiant et mot de passe FBI, identifiant et mot de passe Kalisport")
     # Identifiants FBI et Kalisport
     # Le compte FBI nécessite un profil du type 'Association - Engagement',
     # 'Association' ou 'Association - Compétitions' pour accéder au fichier.
     username_fbi = sys.argv[1]
     password_fbi = sys.argv[2]
-    username_kali = sys.argv[3]
-    password_kali = sys.argv[4]
+    url_kali = sys.argv[3]
+    username_kali = sys.argv[4]
+    password_kali = sys.argv[5]
 
     delete_previous_matchs_file()
     try:
         driver = create_web_driver()
         download_matchs_file_from_fbi(driver, username_fbi, password_fbi)
-        import_matchs_file_to_kalisport(driver, username_kali, password_kali)
+        import_matchs_file_to_kalisport(driver, url_kali, username_kali, password_kali)
     except Exception:
         driver.get_screenshot_as_file(download_path + "/screenshot.png")
         raise
