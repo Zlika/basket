@@ -91,7 +91,7 @@ def import_matchs_file_to_kalisport(driver, url_kali, username_kali, password_ka
 
 def main():
     if len(sys.argv) != 6:
-        raise Exception("Arguments attendus : identifiant et mot de passe FBI, identifiant et mot de passe Kalisport")
+        raise Exception("Arguments attendus : identifiant et mot de passe FBI, adresse Kalisport, identifiant et mot de passe Kalisport")
     # Identifiants FBI et Kalisport
     # Le compte FBI nécessite un profil du type 'Association - Engagement',
     # 'Association' ou 'Association - Compétitions' pour accéder au fichier.
