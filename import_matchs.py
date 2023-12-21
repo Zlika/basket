@@ -42,7 +42,7 @@ def create_web_driver():
 def download_matchs_file_from_fbi(driver, username_fbi, password_fbi):
     # Télécharngement du fichier rechercherRencontre.xlsx
     print("Connexion à FBI")
-    driver.get("https://extranet.ffbb.com/fbi/identification.do")
+    driver.get("https://extranet.ffbb.com/fbi/connexion.fbi")
     driver.find_element(By.ID, "materialLoginFormEmail").send_keys(username_fbi)
     driver.find_element(By.ID, "materialLoginFormPassword").send_keys(password_fbi)
     driver.find_element(By.CSS_SELECTOR, ".btn").click()
