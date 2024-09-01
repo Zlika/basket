@@ -78,12 +78,12 @@ def import_matchs_file_to_kalisport(driver, url_kali, username_kali, password_ka
             expected_conditions.invisibility_of_element_located((By.ID, 'tarteaucitronAlertBig')))
     driver.find_element(By.ID, "fichier").send_keys(matchs_file)
     driver.find_element(By.ID, "cmdImporterStep2").click()
-    driver.find_element(By.ID, "cmdImporterStep3").click()
-    driver.find_element(By.ID, "cmdImporterStep5").click()
+    driver.find_element(By.NAME, "cmdImporterStep3").click()
+    driver.find_element(By.NAME, "cmdImporterStep5").click()
     print("Import des données")
     driver.find_element(By.LINK_TEXT, "Importer le résultat de la conversion").click()
-    driver.find_element(By.ID, "cmdImporterStep3").click()
-    driver.find_element(By.ID, "cmdImport").click()
+    driver.find_element(By.NAME, "cmdImporterStep3").click()
+    driver.find_element(By.NAME, "cmdImport").click()
     WebDriverWait(driver, 30).until(
         expected_conditions.visibility_of_element_located(
             (By.XPATH, "//*[contains(text(), \"Résultat de l'import\")]")))
